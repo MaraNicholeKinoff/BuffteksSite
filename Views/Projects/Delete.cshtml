@@ -1,0 +1,32 @@
+@model BuffteksWebsite.Models.Project
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2 class="text-white" >Delete Project</h2>
+
+<h3 class="text-white" >Are you sure you want to delete this project?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.ProjectDescription)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.ProjectDescription)
+        </dd>
+    </dl>
+    
+    <form class="text-white"  asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a  class="text-success" asp-action="Index">Back to List</a>
+    </form>
+</div>

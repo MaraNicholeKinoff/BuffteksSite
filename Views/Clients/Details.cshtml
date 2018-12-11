@@ -1,0 +1,47 @@
+@model BuffteksWebsite.Models.Client
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 class="text-white">Client Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a  class="text-success" asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a class="text-success"  asp-action="Index">Back to List</a>
+</div>

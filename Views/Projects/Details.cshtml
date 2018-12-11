@@ -1,0 +1,100 @@
+@model BuffteksWebsite.Models.ProjectDetailViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 class="text-white" >Project Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.TheProject.ProjectName)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.TheProject.ProjectName)
+        </dd>
+        <dt class="text-white" >
+            @Html.DisplayNameFor(model => model.TheProject.ProjectDescription)
+        </dt>
+        <dd class="text-white" >
+            @Html.DisplayFor(model => model.TheProject.ProjectDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <h4 class="text-white" >
+        Participants - Client
+    </h4>
+    <hr />    
+    <table class="table">
+        <thead>
+            <tr>
+                    <th class="text-white" >
+                        First Name
+                    </th>
+                    <th class="text-white" >
+                        Last Name
+                    </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var client in Model.ProjectClients) {
+            <tr>
+                <td class="text-white" >
+                    @Html.DisplayFor(c => client.FirstName)
+                </td>
+                <td class="text-white" >
+                    @Html.DisplayFor(c => client.LastName)
+                </td>
+                <td>
+                    <a  class="text-success" asp-action="DeleteProjectParticipant" asp-route-pid="@Model.TheProject.ID" asp-route-id="@client.ID">Delete</a>
+                    <!--<span class="text-danger">TODO: We need to cascade delete members if a project is deleted</span>-->
+                </td>                
+            </tr>
+    }
+        </tbody>
+    </table>    
+</div>
+<div>
+    <h4 class="text-white" >
+        Participants - Member
+    </h4>
+    <hr />    
+    <table class="table">
+        <thead>
+            <tr>
+                    <th class="text-white" >
+                        First Name
+                    </th>
+                    <th class="text-white" >
+                        Last Name
+                    </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var member in Model.ProjectMembers) {
+            <tr>
+                <td class="text-white" >
+                    @Html.DisplayFor(m => member.FirstName)
+                </td>
+                <td class="text-white" >
+                    @Html.DisplayFor(m => member.LastName)
+                </td>
+                <td>
+                    <a class="text-success"  asp-action="DeleteProjectParticipant" asp-route-pid="@Model.TheProject.ID" asp-route-id="@member.ID">Delete</a>
+                    <!--<span class="text-danger">TODO: We need to cascade delete members if a project is deleted</span>-->
+                </td>
+            </tr>
+    }
+
+        </tbody>
+    </table>    
+</div>
+<div class="text-white" >
+    <a  class="text-success" asp-action="Edit" asp-route-id="@Model.TheProject.ID">Edit</a> |
+    <a  class="text-success" asp-action="Index">Back to List</a>
+</div>
